@@ -24,4 +24,4 @@ explorer .\bin\Release\net8.0\win-x64\publish\
 .\bin\Release\net8.0\win-x64\publish\BigIntegerFib.exe
 
 --- Run the AOT binary ---
-.\bin\Release\net8.0\win-x64\publish\BigIntegerFib.exe - wait
+.\bin\Release\net8.0\win-x64\publish\BigIntegerFib.exe -wait

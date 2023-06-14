@@ -23,7 +23,7 @@ public static class Program
 
     public static IEnumerable<BigInteger> FibonacciSeries()
     {
-        BigInteger prev = 0, next = 1;
+        BigInteger prev = 1, next = 1;
         yield return prev;
         yield return next;
 
