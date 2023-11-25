@@ -10,7 +10,7 @@ dotnet run
 dotnet run -c Release
 
 -- The output (IL) is here ---
-explorer .\bin\Release\net8.0\
+explorer ..\artifacts\bin\BigIntegerFib\release\
 
 
 -------------------
@@ -18,10 +18,10 @@ explorer .\bin\Release\net8.0\
 dotnet publish -c Release
 
 -- The output is here ---
-explorer .\bin\Release\net8.0\win-x64\publish\
+explorer ..\artifacts\publish\BigIntegerFib\release\
 
 --- Run the AOT binary ---
-.\bin\Release\net8.0\win-x64\publish\BigIntegerFib.exe
+..\artifacts\publish\BigIntegerFib\release\BigIntegerFib.exe
 
 --- Run the AOT binary ---
-.\bin\Release\net8.0\win-x64\publish\BigIntegerFib.exe -wait
+..\artifacts\publish\BigIntegerFib\release\BigIntegerFib.exe -wait

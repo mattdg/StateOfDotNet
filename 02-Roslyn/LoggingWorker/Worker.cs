@@ -1,16 +1,6 @@
 namespace LoggingWorker
 {
-    public static partial class Log
-    {
-        [LoggerMessage(
-            EventId = 12345,
-            Level = LogLevel.Critical,
-            Message = "Worker running at: {now} (code gen)")]
-        public static partial void LogRunningMessage(
-            ILogger logger, DateTimeOffset now);
-    }
-
-    public class Worker : BackgroundService
+    public partial class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
 
@@ -29,6 +19,16 @@ namespace LoggingWorker
                 Log.LogRunningMessage(_logger, DateTimeOffset.Now);
                 await Task.Delay(1000, stoppingToken);
             }
+        }
+
+        static partial class Log
+        {
+            [LoggerMessage(
+                EventId = 12345,
+                Level = LogLevel.Critical,
+                Message = "Worker running at: {now} (code gen)")]
+            public static partial void LogRunningMessage(
+                ILogger logger, DateTimeOffset now);
         }
     }
 }
