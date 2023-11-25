@@ -5,11 +5,6 @@ namespace RoslynSamples
 {
     public static partial class CodeGeneratedJsonSerialization
     {
-        private static JsonSerializerOptions _options = new JsonSerializerOptions
-        {
-            TypeInfoResolver = SourceGenerationContext.Default
-        };
-
         [JsonSourceGenerationOptions(WriteIndented = true)]
         [JsonSerializable(typeof(WeatherForecast))]
         internal partial class SourceGenerationContext : JsonSerializerContext
@@ -18,12 +13,12 @@ namespace RoslynSamples
 
         public static string Serialize(WeatherForecast forecast)
         {
-            return JsonSerializer.Serialize(forecast, _options);
+            return JsonSerializer.Serialize(forecast, SourceGenerationContext.Default.WeatherForecast);
         }
 
         public static WeatherForecast? Deserialize(string forecast)
         {
-            return JsonSerializer.Deserialize<WeatherForecast>(forecast, _options);
+            return JsonSerializer.Deserialize(forecast, SourceGenerationContext.Default.WeatherForecast);
         }
     }
 }
