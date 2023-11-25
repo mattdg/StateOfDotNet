@@ -62,10 +62,17 @@ namespace GrpcGreeter.Services
             IServerStreamWriter<HelloReply> responseStream,
             ServerCallContext context)
         {
-            await foreach (var request in requestStream.ReadAllAsync())
+            try
             {
-                await responseStream.WriteAsync(
-                    new HelloReply { Message = "Hello " + request.Name });
+                await foreach (var request in requestStream.ReadAllAsync())
+                {
+                    await responseStream.WriteAsync(
+                        new HelloReply { Message = "Hello " + request.Name });
+                }
+            }
+            catch (IOException e)
+            {
+                _logger.LogInformation(e.Message);
             }
         }
     }
